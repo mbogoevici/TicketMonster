@@ -219,6 +219,13 @@
             <artifactId>jackson-core-asl</artifactId>
             <version>${jackson.version}</version>
         </dependency>
+        <dependency>
+                   <groupId>org.infinispan</groupId>
+                   <artifactId>infinispan-spring</artifactId>
+                   <version>5.0.0.FINAL</version>
+               </dependency>
+
+
     </dependencies>
     <build>
         <finalName>ticketmonster</finalName>

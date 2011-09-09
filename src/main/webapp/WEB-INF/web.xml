@@ -8,13 +8,23 @@
          metadata-complete="true">
 
   <display-name>Ticket Monster</display-name>
+
+    <context-param>
+        <param-name>spring.profiles.active</param-name>
+        <param-value>local</param-value>
+    </context-param>
+
   	<context-param>
   		<param-name>contextConfigLocation</param-name>
   		<param-value>classpath:/META-INF/spring/ticketmonster-business-context.xml,
               classpath:/META-INF/spring/infrastructure.xml,
               classpath:/META-INF/spring/bookingState.xml,
-              classpath:/META-INF/spring/ticketmonster-security-context.xml</param-value>
+              classpath:/META-INF/spring/ticketmonster-security-context.xml
+              classpath:/META-INF/spring/ticketmonster-caching-context.xml
+          </param-value>
   	</context-param>
+
+
   	
   	<filter>
   		<filter-name>springSecurityFilterChain</filter-name>
@@ -65,4 +75,11 @@
        <persistence-context-ref-name>persistence/TicketMonster/entityManager</persistence-context-ref-name>
        <persistence-unit-name>ticketmonsterPU</persistence-unit-name>
    </persistence-context-ref>
+
+
+    <resource-ref>
+        <res-ref-name>infinispan/cache</res-ref-name>
+        <res-type>org.infinispan.manager.CacheContainer</res-type>
+        <mapped-name>java:jboss/infinispan/spring</mapped-name>
+    </resource-ref>
 </web-app>
